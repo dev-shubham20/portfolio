@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - Shubham Agrawal | Web Designer</title>
+  <meta name="description"
+    content="Resume of Shubham Agrawal - Professional Web Designer with 3+ years of experience specializing in HTML5, CSS3, Bootstrap and Figma.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F172A;
+      --secondary: #334155;
+      --muted: #64748B;
+      --accent: #2547EB;
+      --bg: #F8FAFC;
+      --paper: #FFFFFF;
+      --border: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--secondary);
+      line-height: 1.6;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .resume-toolbar {
+      max-width: 850px;
+      margin: 0 auto 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-back {
+      background-color: var(--paper);
+      color: var(--primary);
+      border-color: var(--border);
+    }
+
+    .btn-back:hover {
+      background-color: #F1F5F9;
+    }
+
+    .btn-print {
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .btn-print:hover {
+      background-color: #1D3BBF;
+    }
+
+    .resume-paper {
+      max-width: 850px;
+      margin: 0 auto;
+      background-color: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      padding: 56px 64px;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .name-title h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .name-title h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 0.92rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+
+    /* Section Styles */
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 16px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    .summary-text {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--secondary);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 24px;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 6px;
+    }
+
+    .skill-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+
+    .skill-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Experience Items */
+    .exp-item {
+      margin-bottom: 24px;
+    }
+
+    .exp-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .exp-company {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .exp-role {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.94rem;
+    }
+
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .exp-desc {
+      font-size: 0.92rem;
+      line-height: 1.68;
+      color: var(--secondary);
+      margin-top: 6px;
+    }
+
+    /* Education */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .edu-item:last-child {
+      border-bottom: none;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.98rem;
+    }
+
+    .edu-univ {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .edu-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background-color: #FFFFFF;
+        padding: 0;
+      }
+
+      .resume-toolbar {
+        display: none !important;
+      }
+
+      .resume-paper {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .section {
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .resume-paper {
+        padding: 32px 20px;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-info {
+        text-align: left;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-header {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Action Toolbar -->
+  <div class="resume-toolbar">
+    <a href="index.html" class="btn btn-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to Portfolio
+    </a>
+    <button onclick="window.print()" class="btn btn-print">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Print / Save as PDF
+    </button>
+  </div>
+
+  <!-- Printable Resume Document -->
+  <main class="resume-paper" id="resumePaper">
+    <header class="header">
+      <div class="name-title">
+        <h1>SHUBHAM AGRAWAL</h1>
+        <h2>WEB DESIGNER</h2>
+      </div>
+      <div class="contact-info">
+        <p><strong>Phone:</strong> <a href="tel:+918864856668">+91 8864856668</a></p>
+        <p><strong>Email:</strong> <a href="mailto:dev.shubhamagrawal@gmail.com">dev.shubhamagrawal@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shubham-agrawal-4016b227a" target="_blank" rel="noopener noreferrer">linkedin.com/in/shubham-agrawal-4016b227a</a></p>
+        <p><strong>Location:</strong> India</p>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+      <h3 class="section-title">Professional Summary</h3>
+      <p class="summary-text">
+        Creative and detail-oriented Web Designer with 3+ years of professional experience designing and developing
+        responsive websites. Specializes in creating clean, modern, and user-friendly interfaces that look consistent
+        across desktop, tablet, and mobile devices. Adept at turning design concepts into functional web experiences
+        using HTML5, CSS3, Bootstrap, and Figma. Skilled in AI-assisted workflows to accelerate ideation, troubleshoot
+        challenges, and maximize workflow productivity while keeping designs strictly human-centered.
+      </p>
+    </section>
+
+    <!-- Key Skills & Toolkit -->
+    <section class="section">
+      <h3 class="section-title">Core Skills & Toolkit</h3>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <span class="skill-title">HTML5</span>
+          <span class="skill-desc">Semantic and well-structured website markup</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-title">CSS3</span>
+          <span class="skill-desc">Clean, responsive and visually consistent styling</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-title">Bootstrap</span>
+          <span class="skill-desc">Fast and responsive layouts using a reliable UI framework</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-title">Figma</span>
+          <span class="skill-desc">Creating clean UI layouts and translating designs into websites</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-title">Responsive Design</span>
+          <span class="skill-desc">Designing websites that work smoothly across different screen sizes</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-title">UI Design</span>
+          <span class="skill-desc">Creating visually appealing and user-friendly interfaces</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-title">Website Optimization</span>
+          <span class="skill-desc">Improving layout, usability and overall website performance</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-title">AI-Assisted Workflow</span>
+          <span class="skill-desc">Using AI tools for ideation, content assistance, troubleshooting and
+            productivity</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="section">
+      <h3 class="section-title">Professional Experience</h3>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">APPNWEB TECHNOLOGIES PVT. LTD.</span>
+            <span class="exp-role"> — Web Designer</span>
+          </div>
+          <span class="exp-date">Jan 2026 – Present</span>
+        </div>
+        <p class="exp-desc">
+          Designing and developing responsive and mobile-friendly websites using HTML, CSS and Bootstrap. Creating
+          visually appealing website layouts based on project requirements and client needs. Designing and refining
+          UI/UX layouts using Figma and converting design concepts into functional web pages. Focused on responsive
+          layouts, visual consistency, cross-browser compatibility and website optimization. Also use AI tools to
+          support design ideation, content preparation, troubleshooting and workflow efficiency.
+        </p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">GENX ESOLUTIONS PVT. LTD. — NOIDA, UP</span>
+            <span class="exp-role"> — Web Designer</span>
+          </div>
+          <span class="exp-date">Jun 2025 – Jan 2026</span>
+        </div>
+        <p class="exp-desc">
+          Designed and developed responsive websites using HTML, CSS and Bootstrap. Created user-friendly layouts with a
+          strong focus on clean design, easy navigation and responsive presentation. Worked on desktop, tablet and
+          mobile layouts while maintaining visual consistency and cross-browser compatibility. Used Figma and
+          AI-assisted tools to support design ideas and improve workflow efficiency.
+        </p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">ECUZEN SOFTWARE PVT. LTD.</span>
+            <span class="exp-role"> — Web Designer</span>
+          </div>
+          <span class="exp-date">Jan 2024 – May 2025</span>
+        </div>
+        <p class="exp-desc">
+          Designed responsive web pages using HTML, CSS and Bootstrap-based layouts. Worked on clean and structured
+          website interfaces according to project requirements. Focused on improving website usability, visual
+          consistency, responsive layouts and browser compatibility. Used AI tools for design references, content
+          assistance and solving common web-design challenges.
+        </p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">IMG GLOBAL INFOTECH PVT. LTD.</span>
+            <span class="exp-role"> — Web Designer Intern</span>
+          </div>
+          <span class="exp-date">July 2023 – Jan 2024</span>
+        </div>
+        <p class="exp-desc">
+          Created responsive website pages using HTML, CSS and Bootstrap. Assisted in designing website layouts and
+          improving the overall user interface. Worked on converting design concepts into functional web pages, creating
+          responsive sections and testing websites across different screen sizes and browsers.
+        </p>
+      </div>
+    </section>
+  </main>
+
+</body>
+
+</html>

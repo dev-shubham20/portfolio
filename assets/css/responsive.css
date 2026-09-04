@@ -1,0 +1,446 @@
+/* ==========================================================================
+   SHUBHAM AGRAWAL - WEB DESIGNER PORTFOLIO
+   Responsive Stylesheet for Mobile, Tablet & Large Screens
+   ========================================================================== */
+
+/* --- Tablet & Medium Screens (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+  :root {
+    --section-spacing-y: 80px;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+  }
+
+  /* Hero Section */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: left;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-visual-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* About Grid */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Process Grid */
+  .process-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Why Grid */
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Education & Personal */
+  .dual-section-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Contact Grid */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    grid-column: span 2;
+  }
+}
+
+/* --- Compact Navigation for Medium Desktops (1025px - 1180px) --- */
+@media (min-width: 1025px) and (max-width: 1180px) {
+  .nav-links {
+    gap: 16px;
+  }
+  .nav-link {
+    font-size: 0.88rem;
+  }
+  .nav-links-wrapper {
+    gap: 20px;
+  }
+  .btn-sm {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* --- Mobile Navigation & Tablet Screens (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+  :root {
+    --section-spacing-y: 65px;
+    --nav-height: 70px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  /* Mobile Hamburger & Nav Menu */
+  .mobile-toggle {
+    display: block;
+    z-index: 1002;
+  }
+
+  .mobile-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-links-wrapper {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 82%;
+    max-width: 360px;
+    height: 100vh;
+    background-color: #FFFFFF;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    padding: 90px 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: right var(--transition-base);
+    z-index: 1001;
+    overflow-y: auto;
+  }
+
+  .nav-links-wrapper.active {
+    right: 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    width: 100%;
+  }
+
+  .nav-link {
+    font-size: 1.12rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    padding-top: 24px;
+  }
+
+  .nav-actions .btn {
+    width: 100%;
+  }
+
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+  }
+
+  .nav-backdrop.active {
+    display: block;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* Process Steps */
+  .process-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Form Row */
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Skills Bento Grid Responsive */
+  .skills-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bento-span-12, .bento-span-8, .bento-span-7, .bento-span-6, .bento-span-5, .bento-span-4 {
+    grid-column: span 1;
+  }
+
+  .figma-comment-bubble {
+    display: none;
+  }
+
+  /* Contact Banner */
+  .contact-banner-cta {
+    padding: 32px 24px;
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-banner-cta h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/* --- Mobile Smartphones (max-width: 640px) --- */
+@media (max-width: 640px) {
+  :root {
+    --section-spacing-y: 55px;
+  }
+
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-section {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+    line-height: 1.18;
+  }
+
+  .hero-description {
+    font-size: 1.02rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .hero-trust-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Floating Badges on Mobile */
+  .floating-badge {
+    padding: 6px 12px;
+  }
+
+  .floating-badge.badge-top-right {
+    top: -12px;
+    right: -10px;
+  }
+
+  .floating-badge.badge-bottom-left {
+    bottom: -14px;
+    left: -10px;
+  }
+
+  .floating-badge.badge-middle-left {
+    display: none;
+  }
+
+  .badge-info-desc {
+    display: none;
+  }
+
+  /* Section Titles */
+  .section-title {
+    font-size: 1.95rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Experience Timeline */
+  .timeline-wrapper::before {
+    left: 18px;
+  }
+
+  .timeline-item {
+    padding-left: 48px;
+    margin-bottom: 36px;
+  }
+
+  .timeline-dot {
+    left: 9px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .timeline-card {
+    padding: 22px 18px;
+  }
+
+  .timeline-company {
+    font-size: 1.15rem;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .timeline-period {
+    align-self: flex-start;
+  }
+
+  /* Projects Filter Bar */
+  .projects-filter-bar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    margin-bottom: 30px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-btn {
+    font-size: 0.82rem;
+    padding: 7px 16px;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .project-actions .btn {
+    width: 100%;
+  }
+
+  /* Process Steps */
+  .process-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Why Grid */
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Contact Form */
+  .contact-form-card {
+    padding: 24px 20px;
+  }
+
+  .contact-item {
+    padding: 16px;
+  }
+
+  .contact-item-value {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  /* Modal */
+  .modal-window {
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-header-banner {
+    padding: 28px 20px 20px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-body {
+    padding: 24px 20px 32px;
+  }
+
+  .modal-meta-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
