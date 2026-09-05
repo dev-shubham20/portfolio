@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- Primary SEO Meta Tags -->
   <title>Shubham Agrawal | Web Designer</title>
@@ -64,6 +64,20 @@
 
       <!-- Desktop & Drawer Navigation Links -->
       <div class="nav-links-wrapper" id="navLinksWrapper">
+        <!-- Mobile Drawer Header -->
+        <div class="drawer-header">
+          <div class="drawer-brand">
+            <div class="brand-symbol brand-symbol-sm">SA</div>
+            <span class="drawer-brand-name">Menu</span>
+          </div>
+          <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
         <nav class="nav-links" aria-label="Main Navigation">
           <a href="#home" class="nav-link active">Home</a>
           <a href="#skills" class="nav-link">Skills</a>
@@ -104,10 +118,10 @@
         <span class="hamburger-line"></span>
       </button>
     </div>
-  </header>
 
-  <!-- Mobile Drawer Backdrop Overlay -->
-  <div class="nav-backdrop" id="navBackdrop"></div>
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div class="nav-backdrop" id="navBackdrop"></div>
+  </header>
 
   <main>
     <!-- ==========================================================================
@@ -593,7 +607,7 @@
             <p class="bento-desc">
               Using AI tools for ideation, content assistance, troubleshooting and productivity.
             </p>
-            <div
+            <div class="ai-workflow-pipeline"
               style="display:flex; align-items:center; justify-content:space-between; margin-top:18px; padding:12px 16px; background:var(--bg-secondary); border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:0.72rem; color:var(--text-secondary);">
               <span>💡 Ideation</span>
               <span>➔</span>

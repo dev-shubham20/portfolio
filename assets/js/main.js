@@ -232,26 +232,92 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinksWrapper = document.getElementById('navLinksWrapper');
   const navBackdrop = document.getElementById('navBackdrop');
+  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
 
-  function openMobileMenu() {
-    mobileToggle.classList.add('active');
-    navLinksWrapper.classList.add('active');
-    navBackdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    mobileToggle.setAttribute('aria-expanded', 'true');
+  let savedScrollY = 0;
+
+  function blockBackgroundTouch(e) {
+    if (navLinksWrapper && !navLinksWrapper.contains(e.target)) {
+      e.preventDefault();
+    }
   }
 
-  function closeMobileMenu() {
-    mobileToggle.classList.remove('active');
-    navLinksWrapper.classList.remove('active');
-    navBackdrop.classList.remove('active');
+  function openMobileMenu() {
+    savedScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+
+    if (mobileToggle) {
+      mobileToggle.classList.add('active');
+      mobileToggle.setAttribute('aria-expanded', 'true');
+    }
+    if (navLinksWrapper) {
+      navLinksWrapper.classList.add('active');
+    }
+    if (navBackdrop) {
+      navBackdrop.classList.add('active');
+    }
+
+    document.documentElement.classList.add('menu-open');
+    document.body.classList.add('menu-open');
+
+    // Pin body to physically prevent all mobile viewport scrolling
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    // Intercept touch & wheel gestures on backdrop and background
+    document.addEventListener('touchmove', blockBackgroundTouch, { passive: false });
+    document.addEventListener('wheel', blockBackgroundTouch, { passive: false });
+  }
+
+  function closeMobileMenu(targetHref) {
+    if (mobileToggle) {
+      mobileToggle.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    }
+    if (navLinksWrapper) {
+      navLinksWrapper.classList.remove('active');
+    }
+    if (navBackdrop) {
+      navBackdrop.classList.remove('active');
+    }
+
+    document.removeEventListener('touchmove', blockBackgroundTouch);
+    document.removeEventListener('wheel', blockBackgroundTouch);
+
+    document.documentElement.classList.remove('menu-open');
+    document.body.classList.remove('menu-open');
+
+    // Unpin body
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
     document.body.style.overflow = '';
-    mobileToggle.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+
+    if (typeof targetHref === 'string' && targetHref.startsWith('#')) {
+      const targetElement = document.querySelector(targetHref);
+      if (targetElement) {
+        setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }, 10);
+        return;
+      }
+    }
+
+    // Restore prior scroll position
+    window.scrollTo(0, savedScrollY);
   }
 
   if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
-      const isOpen = navLinksWrapper.classList.contains('active');
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navLinksWrapper && navLinksWrapper.classList.contains('active');
       if (isOpen) {
         closeMobileMenu();
       } else {
@@ -260,17 +326,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (navBackdrop) {
-    navBackdrop.addEventListener('click', closeMobileMenu);
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileMenu();
+    });
   }
 
-  // Close menu on nav link click
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileMenu();
+    });
+  }
+
+  // Close menu on nav link click and smoothly scroll
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
       if (window.innerWidth <= 1024) {
-        closeMobileMenu();
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          closeMobileMenu(href);
+        } else {
+          closeMobileMenu();
+        }
       }
     });
+  });
+
+  // Close menu on action button click inside drawer
+  if (navLinksWrapper) {
+    const navActionButtons = navLinksWrapper.querySelectorAll('.nav-actions a');
+    navActionButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          closeMobileMenu();
+        }
+      });
+    });
+  }
+
+  const brandLogo = document.getElementById('brandLogo');
+  if (brandLogo) {
+    brandLogo.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1024 && navLinksWrapper && navLinksWrapper.classList.contains('active')) {
+        e.preventDefault();
+        closeMobileMenu('#home');
+      }
+    });
+  }
+
+  // Close drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinksWrapper && navLinksWrapper.classList.contains('active')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Auto-close mobile menu if viewport resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024 && navLinksWrapper && navLinksWrapper.classList.contains('active')) {
+      closeMobileMenu();
+    }
   });
 
   // --- 4. Project Category Filtering ---
@@ -435,6 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (targetOverlay) {
       targetOverlay.classList.add('active');
     }
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
   }
 
@@ -443,6 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (targetOverlay) {
       targetOverlay.classList.remove('active');
     }
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
   }
 
